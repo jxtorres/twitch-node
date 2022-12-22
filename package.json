@@ -4,9 +4,9 @@
     "description": "A sample Lambda function with Express.js",
     "main": "app.js",
     "dependencies": {
-      "aws-lambda": "^1.2.0",
-      "aws-serverless-express": "^3.3.3",
-      "express": "^4.17.1"
+      "aws-lambda": "~1.2.0",
+      "aws-serverless-express": "~3.3.3",
+      "express": "~4.17.1"
     }
   }
   
