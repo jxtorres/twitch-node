@@ -1,6 +1,7 @@
 
 
 import boto3
+import time
 
 
 def tryLaunchGateway(functionName, accountId, region):
@@ -41,6 +42,8 @@ def tryLaunchGateway(functionName, accountId, region):
     for api in response['items']:
         # Print the ID of the REST API
         print(api['id'])
+
+    time.sleep(15)
 
     # Create a resource in the REST API
     response = client.create_resource(
