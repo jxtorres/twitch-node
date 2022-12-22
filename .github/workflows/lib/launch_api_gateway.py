@@ -6,10 +6,10 @@ import time
 
 def tryLaunchGateway(functionName, accountId, region):
     # Create an AWS client for the API Gateway service
-    client = boto3.client('apigateway')
+    apigateway = boto3.client('apigateway')
 
     # Get the list of REST APIs in the account
-    response = client.get_rest_apis()
+    response = apigateway.get_rest_apis()
 
     # Iterate through the list of REST APIs
     for api in response['items']:
@@ -49,7 +49,7 @@ def tryLaunchGateway(functionName, accountId, region):
 
 
     #Deploy the REST API
-    response = client.create_deployment(
+    response = apigateway.create_deployment(
         restApiId=api_id,
         stageName='prod'
     )
