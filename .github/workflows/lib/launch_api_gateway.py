@@ -24,8 +24,7 @@ def tryLaunchGateway(functionName, accountId, region):
     # Create a new REST API
     response = apigateway.create_rest_api(
         name='MyAPI',
-        description='This is my API',
-        version='2020-01-01'
+        description='This is my API'
     )
     api_id = response['id']
 
