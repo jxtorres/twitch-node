@@ -28,6 +28,9 @@ def tryLaunchGateway(functionName, accountId, region):
     )
     api_id = response['id']
 
+    time.sleep(400)  #6 mins + 100 sec
+
+
     # Create a GET method on the root resource
     response = apigateway.put_method(
         restApiId=api_id,
