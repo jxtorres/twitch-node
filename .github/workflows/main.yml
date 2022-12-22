@@ -13,7 +13,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Create ZIP archive
-        run: zip -r app.zip app.js package.json
+        run: zip -r app.zip app.js package.json node_modules/
       - name: Set up AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
