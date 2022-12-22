@@ -30,6 +30,18 @@ def tryLaunchGateway(functionName, accountId, region):
     # Get the ID of the newly created REST API
     api_id = response['id']
 
+
+    print("my new api id..", api_id)
+
+
+    # Get the list of REST APIs in the account
+    response = client.get_rest_apis()
+
+    # Iterate through the list of REST APIs
+    for api in response['items']:
+        # Print the ID of the REST API
+        print(api['id'])
+
     # Create a resource in the REST API
     response = client.create_resource(
         restApiId=api_id,
