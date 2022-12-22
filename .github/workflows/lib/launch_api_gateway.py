@@ -28,13 +28,24 @@ def tryLaunchGateway(functionName, accountId, region):
     )
     api_id = response['id']
 
-    time.sleep(400)  #6 mins + 100 sec
+    time.sleep(20)  #6 mins + 100 sec
+
+
+    # Get the list of resources for the API
+    response = apigateway.get_resources(
+        restApiId=api_id,  # Replace with the ID of your API
+        limit=500
+    )
+
+    # Print the resource IDs
+    firstResourceId = response['items'][0]['id']
+        
 
 
     # Create a GET method on the root resource
     response = apigateway.put_method(
         restApiId=api_id,
-        resourceId='/',
+        resourceId=firstResourceId,  # /
         httpMethod='GET',
         authorizationType='NONE'
     )
