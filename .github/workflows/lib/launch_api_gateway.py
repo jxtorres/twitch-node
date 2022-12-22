@@ -53,7 +53,7 @@ def tryLaunchGateway(functionName, accountId, region):
     # Create a Lambda function integration
     response = apigateway.put_integration(
         restApiId=api_id,
-        resourceId='/',
+        resourceId=firstResourceId,
         httpMethod='GET',
         type='AWS_PROXY',
         integrationHttpMethod='POST',
