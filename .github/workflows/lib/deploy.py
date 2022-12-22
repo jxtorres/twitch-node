@@ -14,7 +14,7 @@ def update_lambda_function(function_name, zip_file, runtime='nodejs12.x', handle
         client.create_function(
             FunctionName=function_name,
             Runtime=runtime,
-            Role='arn:aws:iam::123456789012:role/lambda_basic_execution',
+            Role='arn:aws:iam::682749323867:role/lambda-twitch-node',
             Handler=handler,
             Code={'ZipFile': code}
         )
