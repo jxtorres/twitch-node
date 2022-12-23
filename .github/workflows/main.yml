@@ -14,8 +14,15 @@ jobs:
         run: npm install
       - name: Create ZIP archive app
         run: zip -r app.zip app.js package.json
+
+
+      - name: prepare lib package
+        run: |
+         mkdir nodejs
+         cp -R package.json node_modules/ nodejs/ 
+
       - name: Create ZIP archive libs
-        run: zip -r lib.zip package.json node_modules/
+        run: zip -r lib.zip nodejs/
       - name: Set up AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
