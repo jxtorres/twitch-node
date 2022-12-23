@@ -15,7 +15,7 @@ jobs:
       - name: Create ZIP archive app
         run: zip -r app.zip app.js package.json
       - name: Create ZIP archive libs
-        run: zip -r lib.zip node_modules/
+        run: zip -r lib.zip package.json node_modules/
       - name: Set up AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
