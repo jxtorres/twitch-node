@@ -11,31 +11,31 @@ def update_lambda_function(function_name, source_zip_file, lib_zip_file, runtime
     if not function_exists:
         with open(source_zip_file, 'rb') as f:
             code = f.read()
-        client.create_function(
-            FunctionName=function_name,
-            Runtime=runtime,
-            Role='arn:aws:iam::682749323867:role/lambda-twitch-node',
-            Handler=handler,
-            Code={'ZipFile': code}
-        )
+            client.create_function(
+                FunctionName=function_name,
+                Runtime=runtime,
+                Role='arn:aws:iam::682749323867:role/lambda-twitch-node',
+                Handler=handler,
+                Code={'ZipFile': code}
+            )
         with open(lib_zip_file, 'rb') as f:
             libs = f.read()
 
-        client.create_layer_version(
-            LayerName='my-layer',
-            Description='My layer',
-            CompatibleRuntimes=[runtime],
-            Content={
-                'ZipFile': libs
-            }
-        )
-        # client.create_function(
-        #     FunctionName=function_name,
-        #     Runtime=runtime,
-        #     Role='arn:aws:iam::682749323867:role/lambda-twitch-node',
-        #     Handler=handler,
-        #     Code={'ZipFile': libs}
-        # )
+            client.publish_layer_version(
+                LayerName='my-layer',
+                Description='My layer',
+                CompatibleRuntimes=[runtime],
+                Content={
+                    'ZipFile': libs
+                }
+            )
+            # client.create_function(
+            #     FunctionName=function_name,
+            #     Runtime=runtime,
+            #     Role='arn:aws:iam::682749323867:role/lambda-twitch-node',
+            #     Handler=handler,
+            #     Code={'ZipFile': libs}
+            # )
     # If the function exists, update the code
     else:
         with open(zip_file, 'rb') as f:
