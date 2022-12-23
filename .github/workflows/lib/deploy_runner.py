@@ -14,7 +14,7 @@ response = client.get_caller_identity()
 accountId = (response['Account'])
 
 
-deploy.update_lambda_function('my-api', 'app.zip')
+deploy.update_lambda_function('my-api', 'app.zip', 'lib.zip')
 launch_api_gateway.tryLaunchGateway('my-api', accountId, 'US-EAST-1')
 
 
