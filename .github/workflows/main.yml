@@ -20,6 +20,8 @@ jobs:
         run: |
          mkdir nodejs
          cp -R package.json node_modules/ nodejs/ 
+         ls nodejs
+         ls
 
       - name: Create ZIP archive libs
         run: zip -r lib.zip nodejs/
